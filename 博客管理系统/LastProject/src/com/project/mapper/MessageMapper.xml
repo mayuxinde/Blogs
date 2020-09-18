@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.MessageDao">
+
+	<insert id="add" parameterType="Message">
+		insert into message
+		values(default,#{userId},#{userName},#{message},#{time},#{userImageUrl})
+	</insert>
+
+	<select id="selectMessage" resultType="Message">
+		select * from message
+	</select>
+
+	<select id="selectMessageByUserId" parameterType="Integer"
+		resultType="Message">
+		select * from message where userId=#{userId}
+	</select>
+
+	<select id="selectUserNameByUserId" parameterType="Integer"
+		resultType="String">
+		select userName from message where userId=#{userId}
+	</select>
+
+	<select id="selectMessageById" parameterType="Integer"
+		resultType="Message">
+		select * from message where id=#{id}
+	</select>
+	
+	<delete id="deleteMessage" parameterType="Integer">
+		delete from message where id=#{id}
+	</delete>
+	
+	<select id="selectMessageCounts" resultType="Integer">
+		select count(*) from message
+	</select>
+	
+	<select id="messageList" parameterType="Map" resultType="Message">
+		select * from message limit #{begin},#{size}
+	</select>
+
+
+</mapper> 

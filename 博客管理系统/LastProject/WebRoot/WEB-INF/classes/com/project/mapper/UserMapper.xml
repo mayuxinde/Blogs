@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.UserDao">
+
+	<insert id="register" parameterType="User">
+		insert into user
+		values(default,#{username},#{password},#{imageurl},#{usermode},#{email})
+	</insert>
+
+	<select id="selectUserByEmail" parameterType="String"
+		resultType="User">
+		select * from user where email=#{email}
+	</select>
+
+	<select id="checkUserModeByEmail" parameterType="String"
+		resultType="String">
+		select usermode from user where email=#{email}
+	</select>
+	
+	<select id="showUser" resultType="User">
+		select * from user
+	</select>
+	
+	<delete id="deleteUser" parameterType="Integer">
+		delete from user where id=#{id}
+	</delete>
+	
+	<update id="modify" parameterType="User">
+		update user set username=#{username},password=#{password},imageurl=#{imageurl},usermode=#{usermode},email=#{email}
+	</update>
+	
+	<select id="selectUserById" parameterType="Integer" resultType="User">
+		select * from user where id=#{id}
+	</select>
+
+</mapper> 

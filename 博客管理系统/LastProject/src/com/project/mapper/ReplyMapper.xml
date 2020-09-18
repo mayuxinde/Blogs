@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.ReplyMessageDao">
+
+	<insert id="reply" parameterType="ReplyMessage">
+		insert into replymessage
+		values(default,#{userId},#{userName},#{replyUserId},#{replyUserName},#{message},#{time},#{userImageUrl},#{replyMessageId})
+	</insert>
+	
+	<select id="showReplyMessageByReplyMessageId" parameterType="Integer" resultType="ReplyMessage">
+		select * from replymessage where replyMessageId=#{replyMessageId}
+	</select>
+	
+	<delete id="deleteReplyMessage" parameterType="Integer">
+		delete from replymessage where id=#{id}
+	</delete>
+
+</mapper> 
